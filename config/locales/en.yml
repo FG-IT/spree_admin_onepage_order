@@ -9,4 +9,5 @@ en:
   payment_states:
     refunded: "refunded"
   shipping_carrier: "Carrier"
+  order_shipment_email_resent: "Order shipment email resent"
 
