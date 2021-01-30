@@ -1,0 +1,14 @@
+h1 .badge, h2 .badge, h3 .badge, h5 .badge {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.badge-refunded {
+    color: #fff;
+    background-color: #F55753;
+}
+
+a.badge-refunded:hover, a.badge-refunded:focus {
+    color: #fff;
+    background-color: #f22823;
+}

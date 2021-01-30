@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  Order #<%= @order.number %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <% guest = @order.user.nil? %>
+  <div class="card mb-3">
+    <div class="card-header">
+      <h3 class="card-title mb-0 h5"><%= Spree.t(:customer) %>
+      </h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= @order.bill_address.firstname %> <%= @order.bill_address.lastname %>
+        <% if guest %>
+          <span class="badge badge-secondary"><%= Spree.t(:guest) %></span>
+        <%end %>
+      <br>
+      <%= @order.user.try(:email) || @order.email %>
+      </p>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header">
+      <h3 class="card-title mb-0 h5"> <%= Spree.t(:shipping_address) %></h3>
+    </div>
+    <div class="card-body">
+      <%= render 'spree/admin/shared/address', address: @order.shipping_address %>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title mb-0 h5"><%= Spree.t(:billing_address) %></h3>
+    </div>
+    <div class="card-body">
+     <%= render 'spree/admin/shared/address', address: @order.billing_address %>
+    </div>
+  </div>
+<% end %>
