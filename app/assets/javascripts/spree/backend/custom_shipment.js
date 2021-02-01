@@ -20,13 +20,11 @@ $(document).ready(function () {
     // handle tracking save
     $('[data-hook=admin_shipment_form] a.save-tracking-carrier').on('click', function (event) {
         event.preventDefault()
-
         var link = $(this)
         var shipmentNumber = link.data('shipment-number')
         var tracking = link.parents('tbody').find('input#tracking').val()
         var carrier = link.parents('tbody').find('#carrier').val()
         var url = Spree.url(Spree.routes.shipments_api + '/' + shipmentNumber + '.json')
-
         $.ajax({
             type: 'PUT',
             url: url,

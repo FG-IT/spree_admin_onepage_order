@@ -15,6 +15,9 @@ module SpreeAdminOnepageOrder
     end
 
     def find(name)
+      if name.downcase.include? 'ups'
+        name = 'UPS'
+      end
       all.find { |c| c.code.downcase == name.to_s.downcase } or raise NameError, "unknown carrier #{name}"
     end
   end
