@@ -4,6 +4,10 @@ module Spree
       return 'refunded' if self.refunds.any?
       payment_state
     end
+
+    def can_approve?
+      completed? && !approved?
+    end
   end
 end
 

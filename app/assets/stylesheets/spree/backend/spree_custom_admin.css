@@ -12,3 +12,6 @@ a.badge-refunded:hover, a.badge-refunded:focus {
     color: #fff;
     background-color: #f22823;
 }
+.card-title,.card-header{
+    text-transform: capitalize;
+}

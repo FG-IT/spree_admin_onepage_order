@@ -3,11 +3,12 @@
 
 en:
   hello: "Hello world"
-  shipment_states:
-    ready: "unshipped"
-    pending: "unshipped"
-  payment_states:
-    refunded: "refunded"
-  shipping_carrier: "Carrier"
-  order_shipment_email_resent: "Order shipment email resent"
+  spree:
+    shipment_states_new:
+      ready: "unshipped"
+      pending: "unshipped"
+    payment_states:
+      refunded: "refunded"
+    shipping_carrier: "Carrier"
+    order_shipment_email_resent: "Order shipment email resent"
 

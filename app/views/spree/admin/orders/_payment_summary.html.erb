@@ -1,12 +1,6 @@
 <div class="card mb-3">
   <div class="card-header">
-    <h3 class="card-title mb-0 h5"><%= Spree.t(:summary) %>
-      <% if @order.payment_state_readable.present? %>
-        <span class="state badge badge-<%= @order.payment_state_readable %> text-uppercase">
-          <%= Spree.t(@order.payment_state_readable, scope: :payment_states) %>
-        </span>
-      <% end %>
-    </h3>
+    <h3 class="card-title mb-0 h5"><%= Spree.t(:summary) %></h3>
   </div>
   <div class="table-responsive">
     <table class="table table-condensed table-bordered" id="order_tab_summary" data-hook>
@@ -16,9 +10,15 @@
           <strong><%= Spree.t(:status) %>:</strong>
         </td>
         <td>
+          <% if @order.payment_state_readable.present? && @order.payment_state_readable == 'refunded' %>
+            <span class="state badge badge-<%= @order.payment_state_readable %> text-uppercase">
+              <%= Spree.t(@order.payment_state_readable, scope: :payment_states, default: [:missing, "none"]) %>
+            </span>
+          <% else %>
           <span class="state badge badge-<%= @order.state %> text-uppercase">
             <%= Spree.t(@order.state, scope: :order_state) %>
           </span>
+          <% end %>
         </td>
       </tr>
       <tr>
