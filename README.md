@@ -7,7 +7,7 @@ Introduction goes here.
 1. Add this extension to your Gemfile with this line:
 
     ```ruby
-    gem 'spree_admin_onepage_order', github: '[your-github-handle]/spree_admin_onepage_order'
+    gem 'spree_admin_onepage_order', github: 'FG_IT/spree_admin_onepage_order'
     ```
 
 2. Install the gem using Bundler
