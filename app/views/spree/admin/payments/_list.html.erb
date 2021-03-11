@@ -17,8 +17,10 @@
         <td><%= link_to payment.number, spree.admin_order_payment_path(@order, payment) %></td>
         <td><%= pretty_time(payment.created_at) %></td>
         <td class="amount text-center"><%= payment.display_amount %></td>
-        <td class="text-center"><%= payment_method_name(payment) %></td>
-        <td class="text-center"><%= payment.source.try(:transaction_id) rescue payment.transaction_id%></td>
+        <td class="text-center"><%= payment_method_name(payment) %> <br>
+          <%= payment.payment_method.description %> (<%= payment.payment_method.login %>)
+        </td>
+        <td class="text-center"><%= payment.source.try(:transaction_id) rescue payment.transaction_id %></td>
         <td class="text-center">
             <span class="badge badge-<%= payment.state %>">
               <%= Spree.t(payment.state, scope: :payment_states, default: payment.state.capitalize) %>
@@ -29,7 +31,7 @@
             <% if action == 'credit' %>
               <%= link_to_with_icon('exit.svg', Spree.t(:refund), new_admin_order_payment_refund_path(@order, payment), no_text: true, class: "btn btn-outline-secondary btn-sm") if can?(:create, Spree::Refund) %>
             <% else %>
-              <%= link_to_with_icon(action + '.svg', Spree.t(action), fire_admin_order_payment_path(@order, payment, e: action), method: :put, no_text: true, data: { action: action }, class: "btn btn-outline-secondary btn-sm") if can?(action.to_sym, payment) %>
+              <%= link_to_with_icon(action + '.svg', Spree.t(action), fire_admin_order_payment_path(@order, payment, e: action), method: :put, no_text: true, data: {action: action}, class: "btn btn-outline-secondary btn-sm") if can?(action.to_sym, payment) %>
             <% end %>
           <% end %>
         </td>
