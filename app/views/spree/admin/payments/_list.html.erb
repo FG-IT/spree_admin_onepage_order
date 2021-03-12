@@ -18,7 +18,7 @@
         <td><%= pretty_time(payment.created_at) %></td>
         <td class="amount text-center"><%= payment.display_amount %></td>
         <td class="text-center"><%= payment_method_name(payment) %> <br>
-          <%= payment.payment_method.description %> (<%= payment.payment_method.login %>)
+          <%= payment.payment_method.description %> <%= payment.source.try(:login) rescue 'n/a' %>
         </td>
         <td class="text-center"><%= payment.source.try(:transaction_id) rescue payment.transaction_id %></td>
         <td class="text-center">
