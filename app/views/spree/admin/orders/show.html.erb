@@ -3,20 +3,21 @@
 <%= render 'spree/admin/orders/order_sidebar', current: :shipments %>
 
 <% content_for :page_title do %>
-  <% unless @order.state == 'complete' %>
+  <% unless @order.complete? %>
     <span class="state badge badge-<%= @order.state %> text-uppercase">
       <%= Spree.t(@order.state, scope: :order_state) %>
     </span>
   <% end %>
-  <% if @order.payment_state_readable.present? %>
-    <span class="state badge badge-<%= @order.payment_state_readable %> text-uppercase">
-      <%= Spree.t(@order.payment_state_readable, scope: :shipment_states_new) %>
+  <% unless @order.canceled? %>
+    <% if @order.payment_state_readable.present? %>
+      <span class="state badge badge-<%= @order.payment_state_readable %> text-uppercase">
+        <%= Spree.t(@order.payment_state_readable, scope: :shipment_states_new) %>
+      </span>
+    <% end %>
+    <span class="state badge badge-<%= @order.shipment_state %> text-uppercase">
+      <%= Spree.t(@order.shipment_state, scope: :shipment_states_new) %>
     </span>
   <% end %>
-  <span class="state badge badge-<%= @order.shipment_state %> text-uppercase">
-    <%= Spree.t(@order.shipment_state, scope: :shipment_states_new) %>
-  </span>
-
 <% end %>
 <div class="">
   <%= pretty_time(@order.completed_at) %>

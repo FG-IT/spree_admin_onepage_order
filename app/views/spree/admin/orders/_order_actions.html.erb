@@ -10,7 +10,7 @@
                        icon: 'envelope.svg'
     %>
   <% end %>
-  <% if can?(:resend, order) and order.completed? and order.shipments.any? %>
+  <% if can?(:resend, order) and order.completed? and order.shipments.any? and order.shipments.first.shipped?%>
     <%= button_link_to Spree.t(:resend_shipment, scope: 'admin.order.events', default: Spree.t(:resend_shipment)),
                        resend_shipped_admin_order_url(order),
                        method: :post,
