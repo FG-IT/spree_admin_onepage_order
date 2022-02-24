@@ -52,16 +52,16 @@
         </tr>
       <% end %>
 
-      <% if @order.additional_tax_total != 0 %>
-        <tr>
-          <td data-hook='admin_order_tab_additional_tax_title'>
-            <strong><%= Spree.t(:tax) %>:</strong>
-          </td>
-          <td id='additional_tax_total'>
-            <%= @order.display_additional_tax_total.to_html %>
-          </td>
-        </tr>
-      <% end %>
+      <%# if @order.additional_tax_total != 0 %>
+<!--        <tr>-->
+<!--          <td data-hook='admin_order_tab_additional_tax_title'>-->
+<!--            <strong><%#= Spree.t(:tax) %>:</strong>-->
+<!--          </td>-->
+<!--          <td id='additional_tax_total'>-->
+            <%#= @order.display_additional_tax_total.to_html %>
+<!--          </td>-->
+<!--        </tr>-->
+      <%# end %>
 
       <%= render "spree/admin/orders/adjustments_manifest",
                  adjustments: @order.line_item_adjustments,
