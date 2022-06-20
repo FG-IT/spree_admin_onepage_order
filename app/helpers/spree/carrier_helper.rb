@@ -1,5 +1,5 @@
 module Spree
-  module BaseHelperDecorator
+  module CarrierHelper
     def link_to_carrier_tracking(shipment, options = {})
       return unless shipment.tracking && shipment.shipping_method
 
@@ -18,5 +18,3 @@ module Spree
     end
   end
 end
-
-Spree::BaseHelper.prepend Spree::BaseHelperDecorator
